@@ -80,9 +80,15 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
+    <Reference Include="System.Data" />
+    <Reference Include="Mono.Data.Sqlite" />
+    <Reference Include="Mono.Data.Sqlcipher">
+      <HintPath>..\..\sqlcipher-mono\src\SQLCipher-Mono\Mono.Data.Sqlcipher-iOS\bin\Debug\Mono.Data.Sqlcipher.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Trials\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -94,10 +100,30 @@
     <Compile Include="MainViewController.designer.cs">
       <DependentUpon>MainViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="..\SQLCipherSpeed-Android\Trials\TimedTrial.cs">
+      <Link>Trials\TimedTrial.cs</Link>
+    </Compile>
+    <Compile Include="..\SQLCipherSpeed-Android\Trials\TimedTrialNonQuery.cs">
+      <Link>Trials\TimedTrialNonQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\SQLCipherSpeed-Android\Trials\TimedTrialQuery.cs">
+      <Link>Trials\TimedTrialQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\SQLCipherSpeed-Android\Trials\TrialRunner.cs">
+      <Link>Trials\TrialRunner.cs</Link>
+    </Compile>
+    <Compile Include="ResultViewController.cs" />
+    <Compile Include="ResultViewSource.cs" />
+    <Compile Include="ResultCell.cs" />
+    <Compile Include="ResultCell.designer.cs">
+      <DependentUpon>ResultCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <InterfaceDefinition Include="MainViewController_iPhone.xib" />
     <InterfaceDefinition Include="MainViewController_iPad.xib" />
+    <InterfaceDefinition Include="ResultCell_iPhone.xib" />
+    <InterfaceDefinition Include="ResultCell_iPad.xib" />
   </ItemGroup>
 </Project>

@@ -51,6 +51,6 @@ Global
 		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = SQLCipherSpeed-Android\SQLCipherSpeed-Android.csproj
+		StartupItem = SQLCipherSpeed-iOS\SQLCipherSpeed-iOS.csproj
 	EndGlobalSection
 EndGlobal

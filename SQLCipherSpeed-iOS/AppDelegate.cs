@@ -17,13 +17,17 @@ namespace SQLCipherSpeed
 		UIWindow window;
 		MainViewController viewController;
 
+		public TrialRunner Runner {get; set;}
+
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 
-			viewController = new MainViewController();
-			window.RootViewController = viewController;
-			window.MakeKeyAndVisible ();
+			var rootNavigationController = new UINavigationController(); 
+			var mainController = new MainViewController();
+			rootNavigationController.PushViewController(mainController, false); 
+			this.window.RootViewController = rootNavigationController; 
+			this.window.MakeKeyAndVisible (); 
 			
 			return true;
 		}

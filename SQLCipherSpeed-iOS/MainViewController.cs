@@ -1,7 +1,7 @@
 
 using System;
 using System.Drawing;
-
+using System.Threading;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
@@ -35,7 +35,23 @@ namespace SQLCipherSpeed
 
 		partial void runButtonClick (MonoTouch.Foundation.NSObject sender)
 		{
-			this.runButton.SetTitle("Clicked", UIControlState.Normal);
+			this.runButton.SetTitle("Running Tests", UIControlState.Normal);
+			this.runButton.Enabled = false;
+			ThreadPool.QueueUserWorkItem (o => RunTrials());
+		}
+
+		private void RunTrials() {
+
+			AppDelegate app = 
+				(AppDelegate)UIApplication.SharedApplication.Delegate;
+			app.Runner = new TrialRunner();
+			app.Runner.Run();
+
+			InvokeOnMainThread(() => {
+				this.runButton.Enabled = true;
+				var controller = new ResultViewController();
+				NavigationController.PushViewController(controller, true);
+			});
 		}
 	}
 }
