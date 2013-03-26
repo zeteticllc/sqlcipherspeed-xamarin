@@ -3,7 +3,7 @@ using System.Data.Common;
 
 namespace SQLCipherSpeed
 {
-	public class TimedTrial
+	public abstract class TimedTrial
 	{
 		public string Name {get;set;}
 		
@@ -13,46 +13,64 @@ namespace SQLCipherSpeed
 		
 		public long EncryptedTime {get; set;}
 
-		public decimal Difference {
+		public int Iterations {get; set;}
+
+		public bool UseTransaction {get; set;}
+
+		public delegate void OnBind(DbCommand command, int iteration);
+
+		public OnBind Bind {get; set;}
+
+		public TimedTrial() 
+		{
+			Iterations = 1;
+			UseTransaction = false;
+		}
+
+		public decimal Difference 
+		{
 			get 
 			{
-				return (Convert.ToDecimal(EncryptedTime) - Convert.ToDecimal(NormalTime)) / Convert.ToDecimal(NormalTime);
+				if(NormalTime == 0) return 0;
+ 				return (Convert.ToDecimal(EncryptedTime) - Convert.ToDecimal(NormalTime)) / Convert.ToDecimal(NormalTime);
 			}
 		}
 
-		public decimal DifferenceAsPercent {
+		public decimal DifferenceAsPercent 
+		{
 			get 
 			{
 				return Difference * Convert.ToDecimal(100);
 			}
 		}
 
-		public string DifferenceAsPercentString {
+		public string DifferenceAsPercentString 
+		{
 			get 
 			{
 				return string.Format("{0:0.0}%", DifferenceAsPercent);
 			}
 		}
 
-		public void RunTests(DbConnection normalConn, DbConnection encryptedConn)
+		public void RunComparison(DbConnection normalConn, DbConnection encryptedConn)
 		{
-			NormalTime = Run (normalConn);
-			EncryptedTime = Run (encryptedConn);
+			NormalTime = TimedRun (normalConn);
+			EncryptedTime = TimedRun (encryptedConn);
 		}
-		
-		private long Run(DbConnection connection) 
+
+		public long TimedRun(DbConnection connection) 
 		{
 			System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch ();
 			stopwatch.Start ();
 
-			using (var command = connection.CreateCommand()) {
-				command.CommandText = Sql;
-				var reader = command.ExecuteReader ();
-				while (reader.Read()) {}
-			}
+			Run (connection);
+
 			stopwatch.Stop();
 			return stopwatch.ElapsedMilliseconds;
 		}
+
+		public abstract void Run(DbConnection connection);
+
 	}
 }
 

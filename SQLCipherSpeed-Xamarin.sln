@@ -3,16 +3,52 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLCipherSpeed-Android", "SQLCipherSpeed-Android\SQLCipherSpeed-Android.csproj", "{2AC63988-1746-4AB6-B445-4EC82B5A66B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLCipherSpeed-iOS", "SQLCipherSpeed-iOS\SQLCipherSpeed-iOS.csproj", "{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.Ad-Hoc|iPhone.ActiveCfg = Debug|Any CPU
+		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.Ad-Hoc|iPhone.Build.0 = Debug|Any CPU
+		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.AppStore|iPhone.ActiveCfg = Debug|Any CPU
+		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.AppStore|iPhone.Build.0 = Debug|Any CPU
 		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
 		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.Release|iPhone.Build.0 = Release|Any CPU
+		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{2AC63988-1746-4AB6-B445-4EC82B5A66B0}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.Debug|iPhone.Build.0 = Debug|iPhone
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.Release|Any CPU.ActiveCfg = Release|iPhoneSimulator
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.Release|Any CPU.Build.0 = Release|iPhoneSimulator
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.Release|iPhone.ActiveCfg = Release|iPhone
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.Release|iPhone.Build.0 = Release|iPhone
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{522BEDFA-A3BD-4BF7-B5F7-21A8327C7D5A}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = SQLCipherSpeed-Android\SQLCipherSpeed-Android.csproj

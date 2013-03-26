@@ -57,6 +57,8 @@
     <Compile Include="TrialRunner.cs" />
     <Compile Include="App.cs" />
     <Compile Include="TrialArrayAdapter.cs" />
+    <Compile Include="TimedTrialQuery.cs" />
+    <Compile Include="TimedTrialNonQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
