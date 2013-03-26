@@ -8,7 +8,8 @@ using Android.Widget;
 using Android.OS;
 using System.Threading;
 
-namespace SQLCipherSpeedAndroid
+
+namespace SQLCipherSpeed
 {
 	[Activity (Label = "SQLCipherSpeed-Android", MainLauncher = true)]
 	public class MainActivity : Activity
@@ -37,13 +38,13 @@ namespace SQLCipherSpeedAndroid
 				_progress.Show();
 			});
 
-			var trials = new TrialSet();
+			var app =  ((App) this.ApplicationContext);
+			app.Runner = new TrialRunner();
+			app.Runner.Run();
 
 			RunOnUiThread(() => {
-							var second = new Intent(this, typeof(ResultActivity));
-							second.PutExtra("MainData", "Results from First Screen");
-							_progressHandler.SendEmptyMessage(0);
-							StartActivity(second);
+				_progressHandler.SendEmptyMessage(0);
+				StartActivity(new Intent(this, typeof(ResultActivity)));
 			});
 		}
 

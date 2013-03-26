@@ -11,17 +11,17 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace SQLCipherSpeedAndroid
+namespace SQLCipherSpeed
 {
 	[Activity (Label = "ResultActivity")]			
-	public class ResultActivity : Activity
+	public class ResultActivity : ListActivity
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			SetContentView (Resource.Layout.Result);
-			var label = FindViewById<TextView> (Resource.Id.screen2Label);
-			label.Text = Intent.GetStringExtra("MainData") ?? "Data not available";
+			var app =  ((App) this.ApplicationContext);
+			var items = app.Runner.Trials.ToArray();
+			ListAdapter = new TrialArrayAdapter(this, items);
 		}
 	}
 }

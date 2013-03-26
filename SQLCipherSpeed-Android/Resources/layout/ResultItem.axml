@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25dp"
+    android:minHeight="25dp">
+   	<TextView
+    android:text="Report Name"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/textViewResultItemReportName" />
+    <TableLayout
+        android:minWidth="25dp"
+        android:minHeight="25dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayoutResultItem">
+        <TableRow
+            android:id="@+id/tableRowResultItem1">
+                	<TextView
+			        android:text="Normal (ms)"
+			        android:textAppearance="?android:attr/textAppearanceSmall"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:gravity="left"
+			        android:padding="5dp"
+			        android:layout_weight=".33"
+			        android:id="@+id/textViewResultItemNormalLabel" />
+			        <TextView
+			        android:text="Encrypted (ms)"
+			        android:textAppearance="?android:attr/textAppearanceSmall"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:gravity="center"
+			        android:layout_weight=".33"
+			        android:padding="5dp"
+			        android:id="@+id/textViewResultItemEncryptedLabel" />
+			        <TextView
+			        android:text="Difference"
+			        android:textAppearance="?android:attr/textAppearanceSmall"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:gravity="right"
+			        android:layout_weight=".33"
+			        android:padding="5dp"
+			        android:id="@+id/textViewResultItemDifferenceLabel" />			        
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRowResultItem2">
+                    <TextView
+			        android:text="Normal"
+			        android:textAppearance="?android:attr/textAppearanceSmall"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:gravity="left"
+			        android:padding="5dp"
+			        android:layout_weight=".33"
+			        android:id="@+id/textViewResultItemNormalMs" />
+			        <TextView
+			        android:text="Encrypted"
+			        android:textAppearance="?android:attr/textAppearanceSmall"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:gravity="center"
+			        android:padding="5dp"
+			        android:layout_weight=".33"
+			        android:id="@+id/textViewResultItemEncryptedMs" />
+			        <TextView
+			        android:text="Difference"
+			        android:textAppearance="?android:attr/textAppearanceSmall"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:gravity="right"
+			        android:padding="5dp"
+			        android:layout_weight=".33"
+			        android:id="@+id/textViewResultItemDifference" />			        
+        </TableRow>
+        
+    </TableLayout>
+    <TextView
+    android:text="SELECT * FROM ..."
+    android:textAppearance="?android:attr/textAppearanceSmall"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/textViewResultItemSql" />
+</LinearLayout>

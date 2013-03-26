@@ -8,7 +8,7 @@
     <ProjectGuid>{2AC63988-1746-4AB6-B445-4EC82B5A66B0}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>SQLCipherSpeedAndroid</RootNamespace>
+    <RootNamespace>SQLCipherSpeed</RootNamespace>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -42,12 +42,21 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Data.Sqlite" />
+    <Reference Include="Mono.Data.Sqlcipher">
+      <HintPath>..\..\sqlcipher-mono\src\SQLCipher-Mono\Mono.Data.Sqlcipher-Android\bin\Debug\Mono.Data.Sqlcipher.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultActivity.cs" />
+    <Compile Include="TimedTrial.cs" />
+    <Compile Include="TrialRunner.cs" />
+    <Compile Include="App.cs" />
+    <Compile Include="TrialArrayAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -57,7 +66,7 @@
     <AndroidResource Include="Resources\layout\Main.axml" />
     <AndroidResource Include="Resources\values\Strings.xml" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
-    <AndroidResource Include="Resources\layout\Result.axml" />
+    <AndroidResource Include="Resources\layout\ResultItem.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
 </Project>
