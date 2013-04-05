@@ -21,6 +21,7 @@ namespace SQLCipherSpeed
 		{
 			base.OnCreate (bundle);
 			_progress = new ProgressDialog(this);
+			_progress.SetCanceledOnTouchOutside(false);
 			_progress.SetMessage(GetString(Resource.String.progress_text));
 			_progressHandler = new ProgressHandler(_progress);
 
@@ -47,8 +48,6 @@ namespace SQLCipherSpeed
 				StartActivity(new Intent(this, typeof(ResultActivity)));
 			});
 		}
-
-
 	}
 
 	class ProgressHandler : Handler
