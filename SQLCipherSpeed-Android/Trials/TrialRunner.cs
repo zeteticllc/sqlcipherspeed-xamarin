@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Data.Common;
+using System.Linq;
 
 namespace SQLCipherSpeed
 {
@@ -20,15 +21,17 @@ namespace SQLCipherSpeed
 			}
 		}
 
-		public List<TimedTrial> Trials = new List<TimedTrial>() {
+		private List<TimedTrial> _trials = new List<TimedTrial>() {
 			new TimedTrialQuery() { 
 				Name = "Initialize", 
+				Report = false,
 				Sql = @"SELECT count(*) FROM sqlite_master;" },
 			new TimedTrialNonQuery() { 
-				Name = "Create Table (1st)", 
+				Name = "Create Table (1st operation)", 
 				Sql = @"CREATE TABLE t1(a INTEGER, b INTEGER, c VARCHAR(100));" },
 			new TimedTrialNonQuery() { 
 				Name = "Create Table (2nd)", 
+				Report = false,
 				Sql = @"CREATE TABLE t2(a INTEGER, b INTEGER, c VARCHAR(100));" },
 			new TimedTrialNonQuery() { 
 				Name="500 Inserts (no transaction)", 
@@ -44,9 +47,9 @@ namespace SQLCipherSpeed
 				}
 			},
 			new TimedTrialNonQuery() { 
-				Name="15000 Inserts (with transaction)", 
-				Sql = @"INSERT INTO t1 VALUES (@a,@b,@c);", 
-				Iterations = 15000, 
+				Name="30000 Inserts (with transaction)", 
+				Sql = @"INSERT INTO t2 VALUES (@a,@b,@c);", 
+				Iterations = 30000, 
 				UseTransaction = true, 
 				Bind = (c,i) => { 
 					var random = _random.Next();
@@ -57,29 +60,52 @@ namespace SQLCipherSpeed
 					});
 				}
 			},
-			new TimedTrialQuery() { 
-				Name="50 Selects (no index)", 
-				Sql = @"SELECT count(*), avg(b) FROM t2 WHERE b >= @a AND b < @b;", 
-				Iterations = 50, 
+			new TimedTrialNonQuery() { 
+				Name="500 Updates (w/o index, w/o transaction)", 
+				Sql = @"UPDATE t2 SET b=b*2 WHERE a = @a", 
+				Iterations = 500, 
 				Bind = (c,i) => { 
 					SetParameters(c, new Dictionary<string, object>() {
-						{"@a", i * 50},
-						{"@b", (i + 10) * 50}
+						{"@a", i * 60}
 					});
 				}
 			},
+			new TimedTrialNonQuery() { 
+				Name = "Create Index", 
+				Report = false,
+				Sql = @"CREATE INDEX i2a ON t2(a)" },
 			new TimedTrialQuery() { 
-				Name="50 SELECTs on string comparison", 
-				Sql = @"SELECT count(*), avg(b) FROM t2 WHERE c LIKE '%' || @a || '%'", 
-				Iterations = 50, 
+				Name="30000 Selects (w/ index)", 
+				Sql = @"SELECT * FROM t2 WHERE a = @a", 
+				Iterations = 30000, 
 				Bind = (c,i) => { 
 					SetParameters(c, new Dictionary<string, object>() {
-						{"@a", Convert.ToString(i)}
+						{"@a", i}
+					});
+				}
+			},
+			new TimedTrialNonQuery() { 
+				Name="2500 Updates (w/ index + transaction)", 
+				Sql = @"UPDATE t2 SET b = @b WHERE a = @a", 
+				Iterations = 2500,
+				UseTransaction = true,
+				Bind = (c,i) => { 
+					var random = _random.Next();
+					SetParameters(c, new Dictionary<string, object>() {
+						{"@a", i * 10},
+						{"@b", random},
 					});
 				}
 			}
-
 		};
+
+		public IEnumerable<TimedTrial> Trials
+		{
+			get
+			{
+				return _trials.Where(t => t.Report);
+			}
+		}
 
 		public void Run ()
 		{
@@ -97,14 +123,7 @@ namespace SQLCipherSpeed
 					((Mono.Data.Sqlcipher.SqliteConnection) encryptedConn).SetPassword("test");
 					encryptedConn.Open();
 
-					/*
-					using(var command = encryptedConn.CreateCommand()) {
-						command.CommandText = "PRAGMA kdf_iter = 20000;";
-						command.ExecuteNonQuery();
-					}
-					*/
-
-					foreach(var trial in Trials)
+					foreach(var trial in _trials)
 					{
 						trial.RunComparison(normalConn, encryptedConn);
 					}

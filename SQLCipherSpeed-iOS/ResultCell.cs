@@ -29,16 +29,13 @@ namespace SQLCipherSpeed
 			return (ResultCell)Nib.Instantiate (null, null) [0];
 		}
 
-		public TimedTrial Trial 
+		public void SetTrial(TimedTrial trial)
 		{
-			set 
-			{
-				this.labelName.Text = value.Name;
-				this.labelNormalMs.Text = Convert.ToString(value.NormalTime);
-				this.labelEncyptedMs.Text = Convert.ToString(value.EncryptedTime);
-				this.labelDifference.Text = value.DifferenceAsPercentString;
-				this.labelSql.Text = value.Sql;
-			}
+			this.labelName.Text = trial.Name;
+			this.labelNormalMs.Text = Convert.ToString(trial.NormalTime);
+			this.labelEncyptedMs.Text = Convert.ToString(trial.EncryptedTime);
+			this.labelDifference.Text = trial.DifferenceAsPercentString;
+			this.labelSql.Text = trial.Sql;
 		}
 	}
 }

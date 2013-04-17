@@ -83,7 +83,7 @@
     <Reference Include="System.Data" />
     <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="Mono.Data.Sqlcipher">
-      <HintPath>..\..\sqlcipher-mono\src\SQLCipher-Mono\Mono.Data.Sqlcipher-iOS\bin\Debug\Mono.Data.Sqlcipher.dll</HintPath>
+      <HintPath>..\..\sqlcipher-mono\tests\sqlcipher-monotouch-tests\libs\Mono.Data.Sqlcipher.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

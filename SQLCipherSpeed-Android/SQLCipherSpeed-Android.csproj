@@ -43,10 +43,10 @@
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.Data.Sqlite" />
-    <Reference Include="Mono.Data.Sqlcipher">
-      <HintPath>..\..\sqlcipher-mono\src\SQLCipher-Mono\Mono.Data.Sqlcipher-Android\bin\Debug\Mono.Data.Sqlcipher.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="Mono.Data.Sqlcipher">
+      <HintPath>..\lib\android\Mono.Data.Sqlcipher.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

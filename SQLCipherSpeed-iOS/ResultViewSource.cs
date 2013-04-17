@@ -1,9 +1,6 @@
-
-using System;
-using System.Drawing;
-
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using System.Linq;
 
 namespace SQLCipherSpeed
 {
@@ -13,7 +10,7 @@ namespace SQLCipherSpeed
 
 		public ResultViewSource ()
 		{
-			AppDelegate app = 
+			var app = 
 				(AppDelegate)UIApplication.SharedApplication.Delegate;
 
 			runner = app.Runner;
@@ -26,7 +23,7 @@ namespace SQLCipherSpeed
 		
 		public override int RowsInSection (UITableView tableview, int section)
 		{
-			return runner.Trials.Count;
+			return runner.Trials.Count();
 		}
 		
 		public override string TitleForHeader (UITableView tableView, int section)
@@ -40,7 +37,7 @@ namespace SQLCipherSpeed
 			if (cell == null)
 				cell = ResultCell.Create();
 
-			cell.Trial = runner.Trials[indexPath.Item];
+			cell.SetTrial(runner.Trials.ElementAt(indexPath.Row));
 			
 			return cell;
 		}

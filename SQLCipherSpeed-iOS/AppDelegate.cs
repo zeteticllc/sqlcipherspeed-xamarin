@@ -15,7 +15,6 @@ namespace SQLCipherSpeed
 	{
 		// class-level declarations
 		UIWindow window;
-		MainViewController viewController;
 
 		public TrialRunner Runner {get; set;}
 

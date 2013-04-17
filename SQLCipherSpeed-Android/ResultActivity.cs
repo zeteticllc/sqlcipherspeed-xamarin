@@ -20,8 +20,7 @@ namespace SQLCipherSpeed
 		{
 			base.OnCreate (bundle);
 			var app =  ((App) this.ApplicationContext);
-			var items = app.Runner.Trials.ToArray();
-			ListAdapter = new TrialArrayAdapter(this, items);
+			ListAdapter = new TrialArrayAdapter(this, app.Runner.Trials.ToArray());
 		}
 	}
 }

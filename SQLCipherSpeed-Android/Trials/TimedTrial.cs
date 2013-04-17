@@ -17,6 +17,8 @@ namespace SQLCipherSpeed
 
 		public bool UseTransaction {get; set;}
 
+		public bool Report {get; set;}
+
 		public delegate void OnBind(DbCommand command, int iteration);
 
 		public OnBind Bind {get; set;}
@@ -25,6 +27,7 @@ namespace SQLCipherSpeed
 		{
 			Iterations = 1;
 			UseTransaction = false;
+			Report = true;
 		}
 
 		public decimal Difference 
